@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI-Enhanced Teaching Proficiency Self-Check</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f8fa;
+    color: #25313c;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: #ffffff;
+    border-bottom: 1px solid #e3e7eb;
+    padding: 22px 30px;
+}
+
+.header-inner {
+    max-width: 1050px;
+    margin: auto;
+}
+
+.logo-line {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #73808c;
+    font-weight: 700;
+}
+
+header h1 {
+    margin: 7px 0 4px;
+    font-size: 26px;
+}
+
+header p {
+    margin: 0;
+    color: #6c7883;
+    font-size: 14px;
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+    max-width: 900px;
+    margin: 35px auto;
+    padding: 0 20px 50px;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 34px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    border: none;
+    border-radius: 9px;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.primary-btn {
+    background: #263b50;
+    color: white;
+}
+
+.primary-btn:hover {
+    background: #172b3e;
+    transform: translateY(-1px);
+}
+
+.secondary-btn {
+    background: #edf0f3;
+    color: #35424d;
+}
+
+.secondary-btn:hover {
+    background: #dfe4e8;
+}
+
+.button-row {
+    margin-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+/* =========================
+   START SCREEN
+========================= */
+
+.start-icon {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: #e8eef4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    margin-bottom: 22px;
+}
+
+.start-screen h2 {
+    font-size: 30px;
+    margin: 0 0 12px;
+}
+
+.start-screen p {
+    line-height: 1.65;
+    color: #5f6b75;
+}
+
+.dimension-preview {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 12px;
+    margin: 28px 0;
+}
+
+.preview-box {
+    padding: 17px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.preview-box strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 16px;
+}
+
+.autonomy-bg {
+    background: #dceaf7;
+}
+
+.competence-bg {
+    background: #d9f1dc;
+}
+
+.relatedness-bg {
+    background: #f1d9ee;
+}
+
+/* =========================
+   QUIZ
+========================= */
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #71808d;
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    height: 7px;
+    background: #e8ebee;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 28px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #334e68;
+    width: 0%;
+    transition: width .3s ease;
+}
+
+.dimension-label {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.question-title {
+    font-size: 22px;
+    line-height: 1.45;
+    margin-bottom: 23px;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.answer {
+    border: 2px solid #e1e5e9;
+    border-radius: 11px;
+    padding: 17px;
+    cursor: pointer;
+    line-height: 1.45;
+    transition: 0.15s;
+    background: white;
+}
+
+.answer:hover {
+    border-color: #9aabb9;
+    background: #fafbfc;
+}
+
+.answer.selected {
+    border-color: #344f68;
+    background: #eef4f8;
+}
+
+/* =========================
+   RESULTS
+========================= */
+
+.result-title {
+    text-align: center;
+    margin-bottom: 7px;
+}
+
+.result-subtitle {
+    text-align: center;
+    color: #71808a;
+    margin-bottom: 32px;
+}
+
+.profile-summary {
+    background: #f4f6f8;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.profile-summary strong {
+    font-size: 20px;
+}
+
+.result-section {
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 17px;
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.result-header h3 {
+    margin: 0;
+}
+
+.level {
+    font-weight: 800;
+    font-size: 17px;
+}
+
+.result-description {
+    line-height: 1.55;
+    margin: 13px 0 16px;
+}
+
+.level-bar {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 17px;
+}
+
+.level-block {
+    flex: 1;
+    height: 8px;
+    border-radius: 6px;
+    background: rgba(255,255,255,.65);
+}
+
+.level-block.active {
+    background: #31485e;
+}
+
+.next-step {
+    background: rgba(255,255,255,.65);
+    padding: 13px 15px;
+    border-radius: 9px;
+    line-height: 1.45;
+    font-size: 14px;
+}
+
+.next-step strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.legend {
+    margin-top: 25px;
+    border-top: 1px solid #e1e4e7;
+    padding-top: 20px;
+    color: #697681;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.hidden {
+    display: none;
+}
+
+@media(max-width:700px) {
+    .dimension-preview {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 24px;
+    }
+
+    .start-screen h2 {
+        font-size: 25px;
+    }
+
+    .question-title {
+        font-size: 19px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+        <div class="logo-line">Professional Learning</div>
+        <h1>AI-Enhanced Teaching Proficiency Self-Check</h1>
+        <p>Explore how you currently use AI to support student learning.</p>
+    </div>
+</header>
+
+<div class="container">
+
+<!-- START SCREEN -->
+
+<div id="startScreen" class="card start-screen">
+
+    <div class="start-icon">✦</div>
+
+    <h2>What's your AI teaching profile?</h2>
+
+    <p>
+        This short self-check presents classroom situations involving the
+        purposeful use of AI. Choose the response that most closely reflects
+        what you would currently do.
+    </p>
+
+    <p>
+        There are no right or wrong answers. Your responses will help you
+        identify your current practices and possible next steps.
+    </p>
+
+    <div class="dimension-preview">
+
+        <div class="preview-box autonomy-bg">
+            <strong>Autonomy</strong>
+            Supporting student choice, agency and independence.
+        </div>
+
+        <div class="preview-box competence-bg">
+            <strong>Competence</strong>
+            Helping students learn at an appropriate level of challenge.
+        </div>
+
+        <div class="preview-box relatedness-bg">
+            <strong>Relatedness</strong>
+            Strengthening reflection, interaction and learning relationships.
+        </div>
+
+    </div>
+
+    <button class="primary-btn" onclick="startQuiz()">
+        Begin Self-Check →
+    </button>
+
+</div>
+
+
+<!-- QUIZ SCREEN -->
+
+<div id="quizScreen" class="card hidden">
+
+    <div class="progress-info">
+        <span id="questionNumber"></span>
+        <span id="progressPercent"></span>
+    </div>
+
+    <div class="progress-bar">
+        <div id="progressFill" class="progress-fill"></div>
+    </div>
+
+    <div id="dimensionLabel" class="dimension-label"></div>
+
+    <div id="questionText" class="question-title"></div>
+
+    <div id="answers" class="answers"></div>
+
+    <div class="button-row">
+
+        <button
+            id="backButton"
+            class="secondary-btn"
+            onclick="previousQuestion()">
+            ← Back
+        </button>
+
+        <button
+            id="nextButton"
+            class="primary-btn"
+            onclick="nextQuestion()"
+            disabled>
+            Next →
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- RESULTS -->
+
+<div id="resultScreen" class="card hidden">
+
+    <h2 class="result-title">Your AI-Enhanced Teaching Profile</h2>
+
+    <p class="result-subtitle">
+        Your profile reflects your responses across three dimensions.
+    </p>
+
+    <div id="overallProfile" class="profile-summary"></div>
+
+    <div id="resultContainer"></div>
+
+    <div class="legend">
+        <strong>About the proficiency levels</strong><br>
+        <b>Emergent:</b> Exploring simple, low-risk ways to use AI to support students.<br>
+        <b>Proficient:</b> Mediating AI use and student interaction while preserving student agency.<br>
+        <b>Accomplished:</b> Intentionally designing AI-enhanced learning experiences and gradually fading AI support as students develop independence.
+    </div>
+
+    <div class="button-row">
+        <button class="secondary-btn" onclick="restartQuiz()">
+            ↻ Retake Self-Check
+        </button>
+    </div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   QUESTIONS
+   score:
+   1 = Emergent
+   2 = Proficient
+   3 = Accomplished
+===================================================== */
+
+const questions = [
+
+/* ================= AUTONOMY ================= */
+
+{
+dimension:"Autonomy",
+question:"You are preparing a task for students with different levels of readiness. How would you use AI?",
+answers:[
+{
+text:"Use AI to generate two versions of the task and allow students to choose the version that suits them.",
+score:1
+},
+{
+text:"Configure an AI Bot to guide students with questions rather than provide answers directly.",
+score:2
+},
+{
+text:"Plan where AI support should appear across the unit and deliberately reduce that support as students become more independent.",
+score:3
+}
+]
+},
+
+{
+dimension:"Autonomy",
+question:"A student immediately asks an AI assistant for the answer when encountering a difficult problem. What would you do?",
+answers:[
+{
+text:"Allow the AI assistant to provide hints so the student can continue the task.",
+score:1
+},
+{
+text:"Configure the AI assistant to respond with guiding questions instead of giving the answer.",
+score:2
+},
+{
+text:"Design a progression in which students first receive AI scaffolds but gradually have to solve similar problems without AI support.",
+score:3
+}
+]
+},
+
+{
+dimension:"Autonomy",
+question:"You are designing a new learning activity using AI. What is most likely to guide your planning?",
+answers:[
+{
+text:"Give students a choice between AI-generated tasks so they can select one appropriate for them.",
+score:1
+},
+{
+text:"Consider how AI can scaffold students' thinking while ensuring they still make the important decisions.",
+score:2
+},
+{
+text:"Map the learning process and deliberately decide where AI should support, challenge and eventually step back.",
+score:3
+}
+]
+},
+
+{
+dimension:"Autonomy",
+question:"Students are completing an extended task over several lessons. How would AI support change over time?",
+answers:[
+{
+text:"Students can choose from AI-generated versions of the activity throughout the task.",
+score:1
+},
+{
+text:"The AI assistant continues to guide students through questioning whenever they encounter difficulty.",
+score:2
+},
+{
+text:"AI support is strongest at the beginning and intentionally fades as students demonstrate greater independence.",
+score:3
+}
+]
+},
+
+{
+dimension:"Autonomy",
+question:"Which classroom use of AI most closely resembles your current practice?",
+answers:[
+{
+text:"Providing students with AI-generated choices or personalised versions of activities.",
+score:1
+},
+{
+text:"Using AI assistants that prompt students to think rather than simply giving them solutions.",
+score:2
+},
+{
+text:"Designing learning sequences where AI support is deliberately adjusted according to students' growing independence.",
+score:3
+}
+]
+},
+
+
+/* ================= COMPETENCE ================= */
+
+{
+dimension:"Competence",
+question:"Students in your class have very different levels of readiness. How would you respond?",
+answers:[
+{
+text:"Use tiered tasks and ALS so students can work at an appropriate level of challenge.",
+score:1
+},
+{
+text:"Configure AI Bots to progressively scaffold students' thinking without providing direct answers.",
+score:2
+},
+{
+text:"Use learning data and AI-supported analysis to identify patterns and design targeted small-group interventions.",
+score:3
+}
+]
+},
+
+{
+dimension:"Competence",
+question:"Several students are struggling with the same concept. What would you most likely do?",
+answers:[
+{
+text:"Provide a simpler or more accessible version of the task.",
+score:1
+},
+{
+text:"Use an AI Bot that asks progressively supportive questions to help students work through the concept.",
+score:2
+},
+{
+text:"Examine performance data to identify the specific misconception and design a targeted intervention for that group.",
+score:3
+}
+]
+},
+
+{
+dimension:"Competence",
+question:"How would you use information from an AI-supported learning activity?",
+answers:[
+{
+text:"Use it to determine whether students need an easier or more challenging follow-up task.",
+score:1
+},
+{
+text:"Use it to adjust the prompts and scaffolds provided by the AI assistant.",
+score:2
+},
+{
+text:"Analyse patterns across students and use the findings to plan targeted teaching or small-group instruction.",
+score:3
+}
+]
+},
+
+{
+dimension:"Competence",
+question:"A student gives an incorrect response during an AI-supported task. What kind of support would you prefer?",
+answers:[
+{
+text:"Give the student a task at a more appropriate level of difficulty.",
+score:1
+},
+{
+text:"Have the AI assistant ask a sequence of questions that helps the student reconsider the response.",
+score:2
+},
+{
+text:"Use the response as assessment information, identify the misconception and adapt subsequent instruction accordingly.",
+score:3
+}
+]
+},
+
+{
+dimension:"Competence",
+question:"When planning differentiated learning with AI, which approach is closest to yours?",
+answers:[
+{
+text:"Create different levels of tasks so students work at an appropriate challenge level.",
+score:1
+},
+{
+text:"Use AI to provide different amounts of scaffolding while students work towards the same learning goal.",
+score:2
+},
+{
+text:"Combine AI-supported learning data with teacher judgement to plan targeted interventions for particular students or groups.",
+score:3
+}
+]
+},
+
+
+/* ================= RELATEDNESS ================= */
+
+{
+dimension:"Relatedness",
+question:"AI has saved you time when preparing a lesson. How would you most likely reinvest that time?",
+answers:[
+{
+text:"Spend more time checking in individually with students and understanding how they are progressing.",
+score:1
+},
+{
+text:"Facilitate a class debrief in which students reflect on what challenged them and how they responded.",
+score:2
+},
+{
+text:"Design peer-learning structures where students explain, question and learn with one another.",
+score:3
+}
+]
+},
+
+{
+dimension:"Relatedness",
+question:"Students have just completed an AI-supported learning task. What happens next?",
+answers:[
+{
+text:"I use the time saved through AI to speak with students who may need encouragement or support.",
+score:1
+},
+{
+text:"I facilitate reflection using questions such as 'What was the hardest question today?' or 'What helped you learn?'",
+score:2
+},
+{
+text:"Students discuss strategies, compare thinking and support one another through a structured peer-learning routine.",
+score:3
+}
+]
+},
+
+{
+dimension:"Relatedness",
+question:"How would you prevent AI-supported learning from becoming an isolated student-and-screen experience?",
+answers:[
+{
+text:"Use the efficiency gained from AI to create more opportunities for teacher-student check-ins.",
+score:1
+},
+{
+text:"Bring students together after AI activities to discuss their thinking and reflect on their learning.",
+score:2
+},
+{
+text:"Design AI-supported tasks that intentionally require students to collaborate, explain and learn from one another.",
+score:3
+}
+]
+},
+
+{
+dimension:"Relatedness",
+question:"A student successfully completes an AI-supported task. What would you most want the student to do afterwards?",
+answers:[
+{
+text:"Discuss the experience with me so I can understand how the student is progressing.",
+score:1
+},
+{
+text:"Reflect on which strategies worked, what was difficult and what could be improved.",
+score:2
+},
+{
+text:"Share strategies with peers, compare approaches and contribute to the learning of the group.",
+score:3
+}
+]
+},
+
+{
+dimension:"Relatedness",
+question:"What role should classroom relationships play when AI becomes more widely used?",
+answers:[
+{
+text:"AI should free teachers from some routine work so they have more time for meaningful student interactions.",
+score:1
+},
+{
+text:"AI-supported learning should be followed by teacher-led reflection that helps students understand their own learning.",
+score:2
+},
+{
+text:"AI should support, rather than replace, a classroom culture where students actively learn with and from one another.",
+score:3
+}
+]
+}
+
+];
+
+
+/* =====================================================
+   QUIZ VARIABLES
+===================================================== */
+
+let currentQuestion = 0;
+let responses = new Array(questions.length).fill(null);
+
+
+/* =====================================================
+   START
+===================================================== */
+
+function startQuiz(){
+
+    document.getElementById("startScreen").classList.add("hidden");
+    document.getElementById("quizScreen").classList.remove("hidden");
+
+    showQuestion();
+}
+
+
+/* =====================================================
+   DISPLAY QUESTION
+===================================================== */
+
+function showQuestion(){
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("questionNumber").innerText =
+        `Question ${currentQuestion + 1} of ${questions.length}`;
+
+    const percent =
+        Math.round(((currentQuestion + 1) / questions.length) * 100);
+
+    document.getElementById("progressPercent").innerText =
+        percent + "%";
+
+    document.getElementById("progressFill").style.width =
+        percent + "%";
+
+
+    /* DIMENSION */
+
+    const label = document.getElementById("dimensionLabel");
+
+    label.innerText = q.dimension;
+
+    if(q.dimension === "Autonomy"){
+        label.className = "dimension-label autonomy-bg";
+    }
+
+    if(q.dimension === "Competence"){
+        label.className = "dimension-label competence-bg";
+    }
+
+    if(q.dimension === "Relatedness"){
+        label.className = "dimension-label relatedness-bg";
+    }
+
+
+    document.getElementById("questionText").innerText =
+        q.question;
+
+
+    /* ANSWERS */
+
+    const answerContainer =
+        document.getElementById("answers");
+
+    answerContainer.innerHTML = "";
+
+
+    /*
+       Shuffle visual order.
+       The actual proficiency score stays attached
+       to the answer object.
+    */
+
+    const shuffledAnswers =
+        [...q.answers].sort(() => Math.random() - 0.5);
+
+
+    shuffledAnswers.forEach(answer => {
+
+        const div = document.createElement("div");
+
+        div.className = "answer";
+
+        div.innerText = answer.text;
+
+
+        if(
+            responses[currentQuestion] &&
+            responses[currentQuestion].text === answer.text
+        ){
+            div.classList.add("selected");
+        }
+
+
+        div.onclick = function(){
+
+            document.querySelectorAll(".answer")
+                .forEach(a => a.classList.remove("selected"));
+
+            div.classList.add("selected");
+
+            responses[currentQuestion] = {
+                dimension:q.dimension,
+                score:answer.score,
+                text:answer.text
+            };
+
+            document.getElementById("nextButton").disabled = false;
+        };
+
+
+        answerContainer.appendChild(div);
+
+    });
+
+
+    document.getElementById("backButton").style.visibility =
+        currentQuestion === 0 ? "hidden" : "visible";
+
+
+    document.getElementById("nextButton").disabled =
+        responses[currentQuestion] === null;
+
+
+    if(currentQuestion === questions.length - 1){
+        document.getElementById("nextButton").innerText =
+            "View My Profile →";
+    }else{
+        document.getElementById("nextButton").innerText =
+            "Next →";
+    }
+
+}
+
+
+/* =====================================================
+   NEXT
+===================================================== */
+
+function nextQuestion(){
+
+    if(responses[currentQuestion] === null){
+        return;
+    }
+
+    if(currentQuestion < questions.length - 1){
+
+        currentQuestion++;
+        showQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }else{
+
+        calculateResults();
+
+    }
+
+}
+
+
+/* =====================================================
+   PREVIOUS
+===================================================== */
+
+function previousQuestion(){
+
+    if(currentQuestion > 0){
+
+        currentQuestion--;
+
+        showQuestion();
+
+    }
+
+}
+
+
+/* =====================================================
+   PROFICIENCY CALCULATION
+===================================================== */
+
+function calculateDimension(dimension){
+
+    const scores =
+        responses
+        .filter(r => r.dimension === dimension)
+        .map(r => r.score);
+
+
+    const average =
+        scores.reduce((a,b) => a+b,0) / scores.length;
+
+
+    /*
+       More conservative proficiency calculation.
+
+       Accomplished requires:
+       - average >= 2.6
+       - at least 3 accomplished responses
+       - no more than 1 emergent response
+
+       Proficient requires:
+       - average >= 1.7
+
+       Otherwise Emergent
+    */
+
+    const accomplishedCount =
+        scores.filter(s => s === 3).length;
+
+    const emergentCount =
+        scores.filter(s => s === 1).length;
+
+
+    let level;
+
+
+    if(
+        average >= 2.6 &&
+        accomplishedCount >= 3 &&
+        emergentCount <= 1
+    ){
+        level = "Accomplished";
+    }
+
+    else if(average >= 1.7){
+        level = "Proficient";
+    }
+
+    else{
+        level = "Emergent";
+    }
+
+
+    return {
+        level:level,
+        average:average
+    };
+
+}
+
+
+/* =====================================================
+   RESULT CONTENT
+===================================================== */
+
+const descriptions = {
+
+Autonomy:{
+
+Emergent:
+"You are beginning to use AI to provide students with choice and personalised learning opportunities.",
+
+Proficient:
+"You use AI to scaffold student thinking while preserving student agency rather than allowing AI to simply provide answers.",
+
+Accomplished:
+"You intentionally design where AI support is introduced, adjusted and gradually faded so students develop greater independence."
+
+},
+
+Competence:{
+
+Emergent:
+"You use AI-supported tools and differentiated tasks to help students work at an appropriate level of challenge.",
+
+Proficient:
+"You use AI to progressively scaffold students' thinking and help them develop understanding without immediately providing solutions.",
+
+Accomplished:
+"You use learning evidence and AI-supported data to identify patterns and design targeted interventions for students."
+
+},
+
+Relatedness:{
+
+Emergent:
+"You use time saved through AI to create more opportunities for meaningful teacher-student interactions and check-ins.",
+
+Proficient:
+"You facilitate reflection and metacognitive conversations after AI-supported learning experiences.",
+
+Accomplished:
+"You intentionally use AI-supported learning to strengthen peer interaction and create a classroom culture where students learn with and from one another."
+
+}
+
+};
+
+
+const nextSteps = {
+
+Autonomy:{
+
+Emergent:
+"Try configuring an AI Bot to respond to students with guiding questions rather than direct answers.",
+
+Proficient:
+"Plan an upcoming unit and identify where AI support should be strong at first, then deliberately reduced as students gain confidence.",
+
+Accomplished:
+"Share your approach with colleagues and explore how intentional fading of AI support can be built systematically into curriculum design."
+
+},
+
+Competence:{
+
+Emergent:
+"Try using AI scaffolds that change according to students' responses rather than simply giving students easier or harder tasks.",
+
+Proficient:
+"Use ALS or other learning evidence to identify a pattern of difficulty, then design a targeted small-group intervention.",
+
+Accomplished:
+"Explore how AI-supported learning data can inform responsive teaching across a unit while retaining professional teacher judgement."
+
+},
+
+Relatedness:{
+
+Emergent:
+"After an AI-supported activity, try a short class debrief such as: 'What was the hardest question today, and what helped you solve it?'",
+
+Proficient:
+"Move from teacher-led reflection towards structured peer-learning routines where students explain strategies and learn from one another.",
+
+Accomplished:
+"Consider how peer-learning protocols can be deliberately embedded into AI-supported lessons and shared as a classroom practice."
+
+}
+
+};
+
+
+/* =====================================================
+   SHOW RESULTS
+===================================================== */
+
+function calculateResults(){
+
+    const dimensions =
+        ["Autonomy","Competence","Relatedness"];
+
+    const results = {};
+
+    dimensions.forEach(dimension => {
+
+        results[dimension] =
+            calculateDimension(dimension);
+
+    });
+
+
+    document.getElementById("quizScreen")
+        .classList.add("hidden");
+
+    document.getElementById("resultScreen")
+        .classList.remove("hidden");
+
+
+    const resultContainer =
+        document.getElementById("resultContainer");
+
+    resultContainer.innerHTML = "";
+
+
+    dimensions.forEach(dimension => {
+
+        const result = results[dimension];
+
+        let backgroundClass = "";
+
+        if(dimension === "Autonomy")
+            backgroundClass = "autonomy-bg";
+
+        if(dimension === "Competence")
+            backgroundClass = "competence-bg";
+
+        if(dimension === "Relatedness")
+            backgroundClass = "relatedness-bg";
+
+
+        let levelNumber = 1;
+
+        if(result.level === "Proficient")
+            levelNumber = 2;
+
+        if(result.level === "Accomplished")
+            levelNumber = 3;
+
+
+        const section =
+            document.createElement("div");
+
+        section.className =
+            `result-section ${backgroundClass}`;
+
+
+        section.innerHTML = `
+
+            <div class="result-header">
+
+                <h3>${dimension}</h3>
+
+                <div class="level">
+                    ${result.level}
+                </div>
+
+            </div>
+
+
+            <div class="level-bar">
+
+                <div class="level-block active"></div>
+
+                <div class="level-block
+                    ${levelNumber >= 2 ? "active" : ""}">
+                </div>
+
+                <div class="level-block
+                    ${levelNumber >= 3 ? "active" : ""}">
+                </div>
+
+            </div>
+
+
+            <div class="result-description">
+                ${descriptions[dimension][result.level]}
+            </div>
+
+
+            <div class="next-step">
+
+                <strong>Your next step</strong>
+
+                ${nextSteps[dimension][result.level]}
+
+            </div>
+
+        `;
+
+
+        resultContainer.appendChild(section);
+
+    });
+
+
+    /* OVERALL PROFILE */
+
+    const levelValues = {
+        Emergent:1,
+        Proficient:2,
+        Accomplished:3
+    };
+
+
+    const overallAverage =
+        dimensions.reduce(
+            (total,d) =>
+                total + levelValues[results[d].level],
+            0
+        ) / 3;
+
+
+    let overallLevel;
+
+    if(overallAverage >= 2.67){
+        overallLevel = "Accomplished";
+    }
+
+    else if(overallAverage >= 1.67){
+        overallLevel = "Proficient";
+    }
+
+    else{
+        overallLevel = "Emergent";
+    }
+
+
+    document.getElementById("overallProfile").innerHTML = `
+
+        <span>Your overall profile</span><br>
+
+        <strong>${overallLevel}</strong>
+
+    `;
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   RESTART
+===================================================== */
+
+function restartQuiz(){
+
+    currentQuestion = 0;
+
+    responses =
+        new Array(questions.length).fill(null);
+
+
+    document.getElementById("resultScreen")
+        .classList.add("hidden");
+
+    document.getElementById("startScreen")
+        .classList.remove("hidden");
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+</script>
+
+</body>
+</html>
